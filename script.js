@@ -14,6 +14,10 @@ var svg = d3.select("#my_dataviz")
         "translate(" + margin.left + "," + margin.top + ")");
 
 d3.csv("./data.csv", function(data){
+    // sort data
+    data.sort(function(b, a) {
+        return a.score - b.score;
+    });
     var x = d3.scaleLinear()
         .domain([50, 100])
         .range([0, width]);
