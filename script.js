@@ -13,6 +13,13 @@ var svg = d3.select("#my_dataviz")
     .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
 
+svg.append("text")
+    .attr("x", (width / 2))
+    .attr("y", 0 - (margin.top / 2))
+    .attr("dy", "1em")
+    .style("text-anchor", "middle")
+    .text("Top 10 CS School scores");
+
 d3.csv("./data.csv", function(data){
     // sort data
     data.sort(function(b, a) {
@@ -27,6 +34,13 @@ d3.csv("./data.csv", function(data){
         .selectAll("text")
         .attr("transform", "translate(-10,0)rotate(-45)")
         .style("text-anchor", "end")
+    // text label for the x axis
+    svg.append("text")
+        .attr("transform",
+            "translate(" + (width/2) + " ," +
+            (height + margin.top + 20) + ")")
+        .style("text-anchor", "middle")
+        .text("Overall score");
 
     var y = d3.scaleBand()
         .range([ 0, height ])
@@ -34,6 +48,14 @@ d3.csv("./data.csv", function(data){
         .padding(.1);
     svg.append("g")
         .call(d3.axisLeft(y))
+    svg.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0 - margin.left)
+        .attr("x",0 - (height / 2))
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("School");
+
     //Bars
     svg.selectAll("rect")
         .data(data)
@@ -44,6 +66,7 @@ d3.csv("./data.csv", function(data){
         .attr("width", function(d) { return x(50); })
         .attr("height", y.bandwidth() )
         .attr("fill", "#4973c5")
+
     svg.selectAll("rect")
         .transition()
         .duration(800)
