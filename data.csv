@@ -1,11 +1,11 @@
-school,score
-Stanford University,93.4
-MIT,94.1
-Carnegie Mellon University,93.1
-UCB,90.1
-University of Oxford,89.5
-University of Cambridge,89.1
-Harvard University,88.7
-EPFL,87.8
-ETH Zurich - Swiss Federal Institute of Technology,87.3
-University of Toronto,86.1
+school,score,website
+Stanford University,93.4,https://www.stanford.edu/
+MIT,94.1,https://www.mit.edu/
+Carnegie Mellon University,93.1,https://www.cmu.edu/
+UCB,90.1,https://www.berkeley.edu/
+University of Oxford,89.5,
+University of Cambridge,89.1,
+Harvard University,88.7,
+EPFL,87.8,
+ETH Zurich - Swiss Federal Institute of Technology,87.3,
+University of Toronto,86.1,

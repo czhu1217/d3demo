@@ -21,6 +21,15 @@ svg.append("text")
     .style("text-anchor", "middle")
     .text("Top 10 CS School scores");
 
+
+function handleHover(d, i){
+    d3.select(this).attr({
+        fill: "orange",
+    });
+}
+
+
+
 d3.csv("./data.csv", function(data){
     // sort data
     data.sort(function(b, a) {
@@ -86,13 +95,34 @@ d3.csv("./data.csv", function(data){
     d3.timer(function(elapsed) {
         d3.selectAll("rect")
             .style("fill", function(d,i) { if(d.school=="Carnegie Mellon University") return color((elapsed/100) % 50);
-            else return "steelblue";})
+            })
     });
 
     svg.selectAll("rect")
         .on("click", handleClick)
+        .on('mouseover', function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .attr('opacity', '.85');
+        })
+        .on("mouseout", function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .attr('opacity', '1');
+        })
+
+    function handleClick(d, i){
+        console.log(d.website);
+        window.open(d.website.toString());
+    }
+
+
 
 })
+
+
+
+
 
 
 

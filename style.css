@@ -1,0 +1,19 @@
+button{
+    margin: 0% 10%;
+    margin-top: 10%;
+}
+#my_dataviz{
+    margin: 10%;
+    margin-top: 0;
+
+}
+svg{
+    border-color: darkslateblue;
+    border-radius: 8px;
+    border-width: 2px;
+    background-color: aliceblue;
+    border-style: solid;
+}
+rect:hover{
+    cursor: pointer;
+}
