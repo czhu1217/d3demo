@@ -2,9 +2,8 @@ button{
     margin: 0% 10%;
     margin-top: 10%;
 }
-#my_dataviz{
+.graph{
     margin: 10%;
-    margin-top: 0;
 
 }
 svg{
