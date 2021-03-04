@@ -1,18 +1,18 @@
-button{
+#selectButton{
     margin: 0% 10%;
-    margin-top: 10%;
 }
 .graph{
     margin: 10%;
 
 }
 svg{
-    border-color: darkslateblue;
     border-radius: 8px;
-    border-width: 2px;
-    background-color: aliceblue;
-    border-style: solid;
+    background-color: #f8f9fa;
 }
 rect:hover{
     cursor: pointer;
+}
+
+#line-plot{
+    margin-top: 10px;
 }
