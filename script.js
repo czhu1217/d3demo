@@ -153,7 +153,10 @@ d3.csv("./aot.csv", function (data) {
 
     // Compute the position of each group on the pie:
     var pie = d3.pie()
-        .value(function (d) { console.log(d); return d.fans; })
+        .value(function (d) {
+            console.log(d);
+            return d.fans;
+        })
     var data_ready = pie(data)
     // Now I know that group A goes from 0 degrees to x degrees and so on.
     console.log(data_ready);
@@ -161,7 +164,7 @@ d3.csv("./aot.csv", function (data) {
     // shape helper to build arcs:
     var arcGenerator = d3.arc()
         .innerRadius(0)
-        .outerRadius(radius*0.8)
+        .outerRadius(radius * 0.8)
 
     // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
     svg2
@@ -170,10 +173,23 @@ d3.csv("./aot.csv", function (data) {
         .enter()
         .append('path')
         .attr('d', arcGenerator)
-        .attr('fill', function (d) { console.log(d); return (color(d.data.name)) })
+        .attr('fill', function (d) {
+            console.log(d);
+            return (color(d.data.name))
+        })
         .attr("stroke", "white")
         .style("stroke-width", "2px")
         .style("opacity", 0.7)
+        .on('mouseover', function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .attr('opacity', '.85');
+        })
+        .on("mouseout", function (d, i) {
+            d3.select(this).transition()
+                .duration('50')
+                .attr('opacity', '1');
+        })
 
     var outerArc = d3.arc()
         .innerRadius(radius * 0.9)
@@ -188,7 +204,7 @@ d3.csv("./aot.csv", function (data) {
         .attr("stroke", "black")
         .style("fill", "none")
         .attr("stroke-width", 1)
-        .attr('points', function(d) {
+        .attr('points', function (d) {
             var posA = arcGenerator.centroid(d) // line insertion in the slice
             var posB = outerArc.centroid(d) // line break: we use the other arc generator that has been built only for that
             var posC = outerArc.centroid(d); // Label position = almost the same as posB
@@ -202,17 +218,21 @@ d3.csv("./aot.csv", function (data) {
         .data(data_ready)
         .enter()
         .append('text')
-        .text( function(d) { console.log(d.data.name) ; return d.data.name } )
-        .attr('transform', function(d) {
+        .text(function (d) {
+            console.log(d.data.name);
+            return d.data.name
+        })
+        .attr('transform', function (d) {
             var pos = outerArc.centroid(d);
             var midangle = d.startAngle + (d.endAngle - d.startAngle) / 2
             pos[0] = radius * 0.99 * (midangle < Math.PI ? 1 : -1);
             return 'translate(' + pos + ')';
         })
-        .style('text-anchor', function(d) {
+        .style('text-anchor', function (d) {
             var midangle = d.startAngle + (d.endAngle - d.startAngle) / 2
             return (midangle < Math.PI ? 'start' : 'end')
         })
+
 
 })
 

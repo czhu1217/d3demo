@@ -1,17 +1,49 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-    <div id="bar-graph" class="graph"></div>
-    <div id="pie-chart" class="graph"></div>
-    <!-- Initialize a select button -->
-    <select id="selectButton"></select>
-    <div id="line-plot" class="graph"></div>
-
-</body>
-<script src="https://d3js.org/d3.v4.js"></script>
+    <title>Data Playground</title>
+    <meta charset="utf-8">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.21.0/slimselect.css'><link rel="stylesheet" href="./style.css">
+<!-- Load d3.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-<script src="script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+<script src="https://github.com/chartjs/Chart.js/blob/master/docs/scripts/utils.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>&#128640; Data Visualization Playground &#128200;</h1>
+        <div class="controls">
+            <h3 class="label">Data</h3>
+            <select id="data" onchange="updateData()">
+                <option value="aot.csv" selected="selected">Attack On Titan Stats</option>
+                <option value="members by subtype.csv">Members by Subtype</option>
+            </select>
+            
+            <h3 class="label">Chart Type</h3>
+    
+            <select name="chartType" id="chartType" onchange="updateChartType()">
+                <option value="line">Line</option>
+                <option value="bar">Bar</option>
+                <option value="pie">Pie</option>
+                <option value="polarArea">Polar Area</option>
+                <option value="doughnut">Doughnut</option>
+                <option value="radar">Radar</option>
+            </select>
+            <h3 class="label">Data Type</h3>
+            <select name="chartType" id="colType" onchange="updateColumn()" multiple>
+                <option value="fans" selected="selected">Fans Count</option>
+                <option value="height">Height</option>
+            </select>
+        </div>
+        <div class="chart-container" >
+            <canvas id="chart"></canvas>
+        </div>
+    </div>
+</body>
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.21.0/slimselect.js'></script>
+<script src="graphs.js"></script>
+<script src="dataProcessing.js"></script>
+

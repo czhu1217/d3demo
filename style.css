@@ -1,18 +1,49 @@
-#selectButton{
-    margin: 0% 10%;
+body {
+    font-family: monospace;
+    color: #3d3d3d;
+    font-weight: 500;
+    margin: 0 2% 0 2%;
+    display: flex;
 }
-.graph{
-    margin: 10%;
+.container{
+    width: 80%;
+    height: 200px;
+    margin: auto;
+    padding: 10px;
+}
+.controls{
+   float: left;
+   width: 30%;
+   height: 200px;
+}
+.ss-main .ss-single-selected {
+    height: 50px;
+    padding: 5px;
+    font-size: 20px;
+}
+.ss-main .ss-content {
+    font-size: 20px;
+}
+.ss-main .ss-multi-selected {
+    padding: 5px;
+    font-size: 20px;
+}
 
-}
-svg{
-    border-radius: 8px;
-    background-color: #f8f9fa;
-}
-rect:hover{
-    cursor: pointer;
+.ss-main .ss-multi-selected .ss-values .ss-value{
+    font-size: 20px;
 }
 
-#line-plot{
-    margin-top: 10px;
+h1{
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 7%;
+}
+
+h3{
+    font-size: 20px;
+}
+.chart-container{
+    position: relative;
+    width: 65%;
+    margin-left: 40%;
 }
